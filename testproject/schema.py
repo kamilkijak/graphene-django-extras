@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.utils.translation import ugettext_lazy as _
 import graphene
 from graphene_django_extras import DjangoListObjectType, DjangoSerializerType, DjangoObjectType
@@ -7,6 +7,13 @@ from graphene_django_extras.paginations import LimitOffsetGraphqlPagination
 
 import serializers
 import filtersets
+
+
+class GroupType(DjangoObjectType):
+    class Meta:
+        model = Group
+        description = " Type definition for a single group "
+        filter_fields = {}
 
 
 class UserType(DjangoObjectType):
